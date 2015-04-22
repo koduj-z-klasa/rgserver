@@ -44,9 +44,18 @@ very easy, please don't abuse the simple registration system and
 create multiple users.'''
 
 urls = (
+    # legacy redirects
     '/viewrobot/(\d*)', 'PageRedirectViewRobot',
     '/viewuser/(\d*)', 'PageRedirectViewUser',
     '/robotsource/(\d*)', 'PageRedirectRobotSource',
+    '/robot/stats', 'PageRobotStats',
+
+    # apis
+    '/api/robot/stats', 'PageRobotStats',
+    '/api/match/history', 'PageMatchData',
+    '/api/match/(\d*)', 'PageMatchData',
+
+    # pages
     '/', 'PageHome',
     '/directory', 'PageDirectory',
     '/home', 'PageHome',
@@ -77,7 +86,6 @@ urls = (
     '/robot/(\d*)/test', 'PageRobotTest',
     '/robot/new', 'PageNewRobot',
     '/robot/new(acc)', 'PageNewRobot',
-    '/robot/stats', 'PageRobotStats',
     '/stats', 'PageStats',
     '/update/prefs', 'PageUpdatePrefs',
     '/user/(\d*)', 'PageViewUser',
@@ -757,16 +765,26 @@ class PageViewUser:
 
         return ltpl('viewuser', user, robots, disabled_robots)
 
-def get_match(mid):
-    query = '''
-        select
-            matches.*,
-            r1.compiled_code as r1_code, r2.compiled_code as r2_code,
-            r1.name as r1_name, r2.name as r2_name
-        from matches
-            join robots r1 on r1.id = matches.r1_id
-            join robots r2 on r2.id = matches.r2_id
-        where matches.id = $id'''
+def get_match(mid, no_code=None):
+    if no_code is None:
+        query = '''
+            select
+                matches.*,
+                r1.compiled_code as r1_code, r2.compiled_code as r2_code,
+                r1.name as r1_name, r2.name as r2_name
+            from matches
+                join robots r1 on r1.id = matches.r1_id
+                join robots r2 on r2.id = matches.r2_id
+            where matches.id = $id'''
+    else:
+        query = '''
+            select
+                matches.*,
+                r1.name as r1_name, r2.name as r2_name
+            from matches
+                join robots r1 on r1.id = matches.r1_id
+                join robots r2 on r2.id = matches.r2_id
+            where matches.id = $id'''
 
     match = db.query(query, vars={'id': mid})
     return match[0] if match else None
@@ -1133,6 +1151,7 @@ class PageStats:
 
         return ltpl('stats', *[getattr(self, x)() for x in info])
 
+
 class PageRobotStats:
     def GET(self):
         robots = db.select(
@@ -1151,7 +1170,30 @@ class PageRobotStats:
             })
         return json.dumps(bots)
 
+
+class PageMatchData:
+    def GET(self, mid=None):
+        if mid is None:
+            histories = db.select('history', what='match_id, timestamp')
+            valids = []
+            for history in histories:
+                valids.append({
+                    'match_id': history.match_id,
+                    'timestamp': history.timestamp
+                })
+            return json.dumps(valids)
+        else:
+            match = get_match(mid, True)  # No code. ;)
+            if not match:
+                return json.dumps({
+                    'error': 'match not found'
+                })
+            match.data = get_match_data(mid)
+            return json.dumps(match)
+
+
 DEFAULT_PERIOD = tools.MONTH
+
 
 class PageRobotCharts:
     def get_robot(self, rid):
@@ -1458,7 +1500,7 @@ class PageModerate:
 
         robots = db.select('robots', what='id, rating, compiled_code',
                            where='''passed and compiled and not disabled and
-                           rating is not NULL and rating < 300 and
+                           rating is not NULL and rating < -800 and
                            not automatch and last_updated
                            < extract(epoch from now()) - 60 * 60 * 24 * 7''',
                            order='rating asc')
