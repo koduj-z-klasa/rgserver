@@ -5,23 +5,12 @@ $def with (content)
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1">
     $if 'title' in content:
-        <title>$content.title | Robot Game</title>
+        <title>$content.title | Robot Game w Koduj z Klasą</title>
     $else:
-        <title>Robot Game</title>
+        <title>Robot Game w Koduj z Klasą</title>
     <link rel="stylesheet" href="/static/main.css?v=5"/>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-12588142-5', {
-        'cookieDomain': 'robotgame.net',
-        'siteSpeedSampleRate': 100
-      });
-      ga('require', 'displayfeatures');
-      ga('require', 'linkid', 'linkid.js');
-      ga('send', 'pageview');
+<!-- google analytics idzie tutaj -->
     </script>
   </head>
   <body>
@@ -41,26 +30,26 @@ $def with (content)
         </div>-->
         <div class="nav large clearfix">
           <div class="left">
-            <a href="/home"><i class="fa fa-fw fa-home"></i><u id="key-home">H</u>ome</a>
-            <a href="/directory"><i class="fa fa-fw fa-trophy"></i><u id="key-w">W</u>arehouse</a>
-            <a href="/api"><i class="fa fa-fw fa-book"></i><u id="key-r">R</u>ules</a>
+            <a href="/home"><i class="fa fa-fw fa-home"></i><u id="key-home">S</u>tart</a>
+            <a href="/directory"><i class="fa fa-fw fa-trophy"></i><u id="key-w">M</u>agazyn</a>
+            <a href="/api"><i class="fa fa-fw fa-book"></i><u id="key-r">Z</u>asady</a>
             $if 'logged_in' in sess and sess.logged_in:
-              <a href="/robots"><i class="fa fa-fw fa-wrench"></i>My&nbsp;<u id="key-b">B</u>ots</a>
+              <a href="/robots"><i class="fa fa-fw fa-wrench"></i>Moje&nbsp;<u id="key-b">B</u>oty</a>
           </div>
           <div class="right">
             $if 'logged_in' in sess and sess.logged_in:
-              <a href="/user/$sess.user_id"><i class="fa fa-fw fa-user"></i><u id="key-p">P</u>rofile</a>
-              <a href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
+              <a href="/user/$sess.user_id"><i class="fa fa-fw fa-user"></i><u id="key-p">P</u>rofil</a>
+              <a href="/logout"><i class="fa fa-fw fa-sign-out"></i>Wyloguj</a>
             $else:
-              <a href="/reg"><i class="fa fa-fw fa-leaf"></i>Register</a>
-              <a href="/login"><i class="fa fa-fw fa-sign-in"></i><u id="key-l">L</u>ogin</a>
+              <a href="/reg"><i class="fa fa-fw fa-leaf"></i>Rejestracja</a>
+              <a href="/login"><i class="fa fa-fw fa-sign-in"></i><u id="key-l">L</u>ogowanie</a>
           </div>
         </div>
         <div class="header faded">
-          <a href="https://plus.google.com/communities/118117754881924895861/stream/6b902c87-03f4-4c5e-a9aa-ec6399c2f27c">General&nbsp;Discussions</a> &middot;
-          <a href="https://plus.google.com/communities/118117754881924895861/stream/86494a77-9cc7-4a3f-9326-d091b6136eac">Strategy</a> &middot;
-          <a href="https://plus.google.com/communities/118117754881924895861/stream/8899076a-a6a4-4ea8-9ce9-92d6c01e2196">Requests</a> &middot;
-          <a href="https://plus.google.com/communities/118117754881924895861/stream/f5c3b7e3-300e-4dfb-8cec-d45276cd5e57">Bug&nbsp;Reports</a>
+          <a href="https://plus.google.com/communities/118117754881924895861/stream/6b902c87-03f4-4c5e-a9aa-ec6399c2f27c">Ogólna&nbsp;Dyskusja (RG)</a> &middot;
+          <a href="https://plus.google.com/communities/118117754881924895861/stream/86494a77-9cc7-4a3f-9326-d091b6136eac">Strategie</a> &middot;
+          <a href="https://plus.google.com/communities/118117754881924895861/stream/8899076a-a6a4-4ea8-9ce9-92d6c01e2196">Życzenia</a> &middot;
+          <a href="https://plus.google.com/communities/118117754881924895861/stream/f5c3b7e3-300e-4dfb-8cec-d45276cd5e57">Zgłoszenia&nbsp;bugów</a>
         </div>
         <div class="content clearfix">
           $:content

@@ -2,19 +2,18 @@ $def with (match=None, recent=None)
 <div class="clearfix">
   <div class="left blurb">
     <p class="headline">
-      Learn&nbsp;Python.
-      Code&nbsp;Robots.
-      Win&nbsp;Matches.
+      Poznaj&nbsp;Pythona.
+      Programuj&nbsp;Roboty.
+      Wygrywaj&nbsp;Bitwy.
     </p>
     <p>
-      <strong>Robot Game</strong> is a competitive game played with programs.
-      Code an AI to control robots in python. Challenge others in unranked
-      matches. The server automatically queues ranked matches.
+      <strong>Robot Game</strong> to gra, w której programy walczą ze sobą. Serwis powstał w oparciu o <a href="http://www.robotgame.net">RobotGame</a>.
+      Zaprogramuj swojego robota w Pythonie i zmierz się z innymi graczami w bitwach towarzyskich. Nasz serwer sam przeprowadzi rozgrywki rankingowe.
       <strong>
         $if tplib.is_logged_in(sess):
-          <a href="/matchlist">Match&nbsp;List<i class="fa fa-fw fa-caret-right"></i></a>
+          <a href="/matchlist">Aktualne&nbsp;bitwy<i class="fa fa-fw fa-caret-right"></i></a>
         $else:
-          <a href="/rules">Tell&nbsp;me&nbsp;the&nbsp;rules</a>.
+          <a href="/rules">Poznaj&nbsp;zasady</a>.
       </strong>
     </p>
     $if recent:
