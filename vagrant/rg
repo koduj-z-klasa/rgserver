@@ -37,10 +37,10 @@ def main():
 def start():
   subprocess.call(['/etc/init.d/postgresql', 'start'])
   subprocess.call(['/etc/init.d/nginx', 'start'])
-  subprocess.call(['sudo', '-u', 'vagrant', 'uwsgi', '--ini', '/rgserver/vagrant/uwsgi.ini'])
+  subprocess.call(['sudo', '-u', 'root', 'uwsgi', '--ini', '/rgserver/vagrant/uwsgi.ini'])
 
 def stop():
-  subprocess.call(['sudo', '-u', 'vagrant', 'uwsgi', '--stop', '/rgserver/uwsgi/uwsgi.pid'])
+  subprocess.call(['sudo', '-u', 'root', 'uwsgi', '--stop', '/rgserver/uwsgi/uwsgi.pid'])
   subprocess.call(['/etc/init.d/nginx', 'stop'])
   subprocess.call(['/etc/init.d/postgresql', 'stop'])
 
