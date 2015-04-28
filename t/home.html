@@ -74,9 +74,10 @@ $def with (match=None, recent=None)
             </div>
         </div>
     </div>
-<!--   $if tplib.is_logged_in(sess):
-   <div class="g-post" data-href="https://plus.google.com/109162859755475455960/posts/fJHQ5nKV82X"></div>
+  $if tplib.is_logged_in(sess):
+<!--    <div class="g-post" data-href="https://plus.google.com/109162859755475455960/posts/fJHQ5nKV82X"></div>
     <script src="https://apis.google.com/js/plusone.js"></script> -->
+    <div><p>Jesteś zalogowany (dummy text)</p></div>
 </div>
 $if match and match.data:
   $var javascript:
