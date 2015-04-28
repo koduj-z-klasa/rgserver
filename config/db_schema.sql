@@ -18,7 +18,7 @@ SET client_min_messages = warning;
 -- Name: robotgame; Type: DATABASE; Schema: -; Owner: robot
 --
 
-CREATE DATABASE robotgame WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_CA.UTF-8' LC_CTYPE = 'en_CA.UTF-8';
+CREATE DATABASE robotgame WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_EN.UTF-8' LC_CTYPE = 'en_EN.UTF-8';
 
 
 ALTER DATABASE robotgame OWNER TO robot;
