@@ -46,7 +46,7 @@ table {
 /* pygment */
 .highlight .hll { background-color: #ffffcc }
 .highlight  { background: #f8f8f8; }
-.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .c { color: #40808C80; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
@@ -1780,7 +1780,7 @@ hr {
 }
 
 a {
-  color: maroon;
+  color: #008C0C;
   text-decoration: none;
 }
 a:hover {
@@ -1995,7 +1995,7 @@ a.normal {
   background-color: #eedddd; }
 #container .nav {
   padding: 6px;
-  background-color: maroon;
+  background-color: #008C0C;
   color: white;
 }
 #container .nav a {
@@ -2013,7 +2013,7 @@ a.normal {
 }
 #container .content {
   padding: 6px;
-  border-bottom: solid 4px maroon;
+  border-bottom: solid 4px #008C0C;
 }
 #container .content .robot a {
   text-decoration: none;

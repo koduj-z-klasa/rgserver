@@ -7,12 +7,10 @@ import tools
 from datetime import datetime
 
 ADMINS = (
-    1, # bh (hehe, just use one account to be safe
+    1, # wilku (hehe, just use one account to be safe
 )
 MODERATORS = (
-    7392, # WhiteHalmos
-    1, # bh
-    2840 # aurick
+    1, # wilku
 )
 USER_SALT = 'bbiuyxzoswekl;jgtohgoaboih'
 
