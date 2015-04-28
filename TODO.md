@@ -4,15 +4,15 @@ Lista TODO dla serwera [Robot Game] - KzK
 Zadania do zrealizowania:
 -------------------------
 
-1.	Instalacja i konfiguracja RG-KzK		JS, GW	-zrobione
-2.	Tłumaczenie interfejsu www				AJ, GW	-w trakcie
-3.	Zmiana wyglądu / stylu www				GW		-do zrobienia
-3.	Tłumaczenie dokumentacji RG				AJ		-w trakcie
-4.	Utworzenie scenariuszy zajęć			AJ		-w trakcie
-5.	Tłumaczenie strategii (ramk13)			RB		-w trakcie
-6.	Przygotowanie "kawałków" robotów		RB		-w trakcie
-7.	Przygotowanie scenariusza warsztatów	RB+AJ?	-do zrobienia
-8.	RG Sandbox - po co to? jak działa?		JS?		-do zrobienia
+1. [ ]	Instalacja i konfiguracja RG-KzK		JS, GW	-zrobione
+2. [ ]	Tłumaczenie interfejsu www				AJ, GW	-w trakcie
+3. [ ]	Zmiana wyglądu / stylu www				GW		-do zrobienia
+3. [ ]	Tłumaczenie dokumentacji RG				AJ		-w trakcie
+4. [ ]	Utworzenie scenariuszy zajęć			AJ		-w trakcie
+5. [ ]	Tłumaczenie strategii (ramk13)			RB		-w trakcie
+6. [ ]	Przygotowanie "kawałków" robotów		RB		-w trakcie
+7. [ ]	Przygotowanie scenariusza warsztatów	RB+AJ?	-do zrobienia
+8. [ ]	RG Sandbox - po co to? jak działa?		JS?		-do zrobienia
 
 
 ## Szczegółowe informacje
