@@ -4,7 +4,7 @@ private/*
 tmp/*
 !tmp/README
 sessions/*
-!sessions/README
+sessions/README
 dbbackups/*
 !dbbackups/README
 uwsgi/*
