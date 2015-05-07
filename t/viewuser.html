@@ -1,33 +1,33 @@
 $def with (user, robots, disabled_robots)
-$var title: Viewing user $user.id
+$var title: Podgląd użytkownika $user.id
 <div class="clearfix">
   <div class="about">
     $if tplib.is_logged_in(sess) and sess.user_id == user.id:
       <div class="profile-page right">
-        <span><b>$user.robot_count/$user.robots_limit+</b> robots enabled (can be increased)</span>
-        <span><b>$user.challenges/$user.challenges_limit</b> challenges used (resets midnight EST)</span>
+        <span><b>$user.robot_count/$user.robots_limit+</b> możliwych do użycia robotów (może być więcej)</span>
+        <span><b>$user.challenges/$user.challenges_limit</b> challenges used (o północy zresetujemy wszystko)</span>
       </div>
       <strong>
-        <a href="/profile/edit">Edit my profile</a>
+        <a href="/profile/edit">Edycja profilu</a>
       </strong>
-      <h1>About me</h1>
+      <h1>O mnie</h1>
     $else:
-      <h1>About the programmer</h1>
+      <h1>O programiścier</h1>
     <div class="small">
       $if user.last_active:
-        Last active $tplib.time_ago(user.last_active).
+        Ostatnia aktywność $tplib.time_ago(user.last_active).
       $else:
-        Last active a long time ago.
+        Ostatnia aktywność - daaawno temu.
       $if tplib.is_mod(sess):
-        Registered $tplib.time_ago(user.registered_on).
+        Zarejestrowany $tplib.time_ago(user.registered_on).
     </div>
     $:tplib.safe_markdown(user.about)
   </div>
 
   <hr />
-  <h1>Robots</h1>
+  <h1>Roboty</h1>
   $if len(robots) == 0:
-      <p>No robots.</p>
+      <p>Brak robotów.</p>
   $for robot in robots:
       <p>
           <div class="large">
@@ -37,17 +37,17 @@ $var title: Viewing user $user.id
             $if robot.short:
               <i class="fa fa-suitcase trophy-short" rel="tooltip" title="Short bot trophy."></i>
             $if robot.open_source:
-              <i class="fa fa-github faded" rel="tooltip" title="This robot is open-source!"></i>
+              <i class="fa fa-github faded" rel="tooltip" title="Ten robot jest open-source!"></i>
           </div>
           <div class="faded">
               Elo rating: $:tplib.drating(robot)<br/>
               $if robot.passed and robot.compiled:
                 $if robot.rating is not None:
-                  Overall ranking: $(robot.ranking + 1)<br />
+                  Ogólny ranking: $(robot.ranking + 1)<br />
                 $else:
-                  Not yet ranked.<br />
+                  Bez rankingu (jeszcze).<br />
               $else:
-                Not ready for matches.<br />
+                Nie jest jeszcze gotowy do wyzwań..<br />
           </div>
       </p>
 
@@ -65,8 +65,8 @@ $var title: Viewing user $user.id
 
   <hr />
   <p class="faded">
-    Join us in our
-    <strong><a href="https://plus.google.com/communities/118117754881924895861">Community</a></strong>
-    to share your thoughts!
+    Dołącz do nas w
+    <strong><a href="https://plus.google.com/communities/118117754881924895861">Społeczności Robot Game</a></strong>
+    aby dzielić się z innymi swoimi pomysłami!
   </p>
 </div>
