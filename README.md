@@ -5,11 +5,11 @@ Please use github issues for server code/infrastructure related tasks/bugs/featu
 
 ## Dev environment setup using Vagrant
 
-First, download and install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) for your operating system. For Linux and OSX, run `vagrant up` in the project directory. The Windows instructions should be similar. This should take 5-10 minutes (depending on your connection) and will set up your dev environment automatically.
+First, download and install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) for your operating system. Run `vagrant up` from the terminal (for Linux and OSX,) or the command line (Windows) in the project directory. This should take 5-10 minutes (depending on your connection) and will set up your dev environment automatically.
 
-When the above finishes, you should be able to view your local robotgame server at `localhost:8080` using your favorite browser.
+When the above finishes, you should be able to view your local Vagrant server at `localhost:8080` using your favorite browser. If you open that adress in your browser at this point you should get a 502 'Bad gateway' error from nginx, so ssh to your VM server and start the robotgame server ('sudo rg start'). Once 'rg' is started you will be albe to see a copy of the robotgame website on your localhost.
 
-Run `vagrant ssh` to SSH into the VirtualBox VM running your server. Make some changes and run `rg restart` to see those changes.
+Run `vagrant ssh` to SSH into the VirtualBox VM running your server (use [puTTy](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) if you are running Windows). Make some changes and run `rg restart` to see those changes.
 
 For more on using Vagrant, see the [Vagrant documentation](https://docs.vagrantup.com/v2/).
 
@@ -23,10 +23,11 @@ For more on using Vagrant, see the [Vagrant documentation](https://docs.vagrantu
 
 ## Postgres setup
 
+(This is automatically done by Vagrant, you don't have to do it on Vagrant VM).
 (Presumes a brand new, fresh Ubuntu 14.04 install)
 
 1. `sudo apt-get update`
-1. `sudo apt-get install postgresql-9.3 postgresql-client-9.3`
+1. `sudo apt-get install postgresql-9.4 postgresql-client-9.4`
 1. `sudo -u postgres createuser --interactive`
     1. role to add: robot
     1. superuser: n
