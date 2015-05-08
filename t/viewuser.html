@@ -5,14 +5,14 @@ $var title: Podgląd użytkownika $user.id
     $if tplib.is_logged_in(sess) and sess.user_id == user.id:
       <div class="profile-page right">
         <span><b>$user.robot_count/$user.robots_limit+</b> możliwych do użycia robotów (może być więcej)</span>
-        <span><b>$user.challenges/$user.challenges_limit</b> challenges used (o północy zresetujemy wszystko)</span>
+        <span><b>$user.challenges/$user.challenges_limit</b> użytych wyzwań (o północy zresetujemy wszystko)</span>
       </div>
       <strong>
         <a href="/profile/edit">Edycja profilu</a>
       </strong>
       <h1>O mnie</h1>
     $else:
-      <h1>O programiścier</h1>
+      <h1>O programiście</h1>
     <div class="small">
       $if user.last_active:
         Ostatnia aktywność $tplib.time_ago(user.last_active).
@@ -47,7 +47,7 @@ $var title: Podgląd użytkownika $user.id
                 $else:
                   Bez rankingu (jeszcze).<br />
               $else:
-                Nie jest jeszcze gotowy do wyzwań..<br />
+                Nie jest jeszcze gotowy do wyzwań.<br />
           </div>
       </p>
 

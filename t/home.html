@@ -1,13 +1,11 @@
 $def with (match=None, recent=None)
-<div class="header">
-<h1>Robot Game - Koduj z Klasą</h1>
-<h2>Poznaj Pythona. Programuj Roboty. Wygrywaj Bitwy.</h2>
-</div>
-
-<div class="content">
-
 <div class="clearfix">
   <div class="left blurb">
+    <p class="headline">
+      Poznaj&nbsp;Pythona.
+      Programuj&nbsp;Roboty.
+      Wygrywaj&nbsp;Bitwy.
+    </p>
     <p>
       <strong>Robot Game</strong> to gra, w której programy walczą ze sobą. Serwis powstał w oparciu o <a href="http://www.robotgame.net">RobotGame</a>.
       Zaprogramuj swojego robota w Pythonie i zmierz się z innymi graczami w bitwach towarzyskich. Nasz serwer sam przeprowadzi rozgrywki rankingowe.
@@ -77,9 +75,8 @@ $def with (match=None, recent=None)
         </div>
     </div>
   $if tplib.is_logged_in(sess):
-	<!-- <div class="g-post" data-href="https://plus.google.com/109162859755475455960/posts/fJHQ5nKV82X"></div> -->
-    <!-- <script src="https://apis.google.com/js/plusone.js"></script> -->
-</div>
+	<!-- <div class="g-post" data-href="https://plus.google.com/109162859755475455960/posts/fJHQ5nKV82X"></div>
+    <script src="https://apis.google.com/js/plusone.js"></script> -->
 </div>
 $if match and match.data:
   $var javascript:
