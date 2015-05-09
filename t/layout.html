@@ -1,33 +1,80 @@
 $def with (content)
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     $if 'title' in content:
         <title>$content.title | Robot Game w Koduj z Klasą</title>
     $else:
         <title>Robot Game w Koduj z Klasą</title>
+    
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="/static/main.css?v=5"/>
-    <script>
-<!-- google analytics idzie tutaj -->
-    </script>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/static/css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="/static/css/layouts/side-menu.css">
+    <link rel="stylesheet" href="/static/css/fa.css">
+    <!--<![endif]-->
+    
   </head>
   <body>
-      <div id="container">
-        $if 'logged_in' in sess and sess.logged_in and (sess.user_id in [8681, 8691, 8695, 8761, 8762, 8987, 9080, 9212, 9418, 9870]):
-          <div class="notice">
-            Prosimy - szanuj pracę innych programistów (bądź hakerem). Nie staraj się zawieszać systemu. Myśl samodzielnie - to lepsze niż "kopiuj/wklej".
-          </div>
-        $if 'logged_in' in sess and sess.logged_in and sess.user_id:
-          <!--<div class="notice">
-            A temporary per-user pvChat has been added to the bottom of each user's <a href="/user/$sess.user_id">profile</a>.<br />
-            It will be removed when a better chat system is available.
-          </div>-->
-        <!--<div class="notice">
-          Robot Game will be down for a server move tomorrow, Monday June 16th starting approximately
-          7:30AM (EST) for 4-6 hours.
-        </div>-->
+  <div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu">
+            <a class="pure-menu-heading" href="#">Robot Game - KzK</a>
+
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="/home" class="pure-menu-link">
+                    <i class="fa fa-fw fa-home"></i>Home</a></li>
+                <li class="pure-menu-item"><a href="/directory" class="pure-menu-link">
+                    <i class="fa fa-fw fa-trophy"></i>Magazyn</a></li>
+                <li class="pure-menu-item"><a href="/api" class="pure-menu-link">
+                    <i class="fa fa-fw fa-book"></i>Zasady</a></li>
+        $if 'logged_in' in sess and sess.logged_in:
+                <li class="pure-menu-item"><a href="/robots" class="pure-menu-link">
+                    <i class="fa fa-fw fa-wrench"></i>Moje roboty</a></li>
+        $if 'logged_in' in sess and sess.logged_in:
+                <li class="pure-menu-item"><a href="/user/$sess.user_id" class="pure-menu-link">
+                    <i class="fa fa-fw fa-user"></i>Profil</a></li>
+                <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">
+                    <i class="fa fa-fw fa-sign-out"></i>Wyloguj</a></li>
+        $else:
+                <li class="pure-menu-item"><a href="/reg" class="pure-menu-link">
+                    <i class="fa fa-fw fa-leaf"></i>Rejestracja</a></li>
+                <li class="pure-menu-item"><a href="/login" class="pure-menu-link">
+                    <i class="fa fa-fw fa-sign-in"></i>Logowanie</a></li>
+            
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        
+           $:content 
+ 
+    </div>
+ </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!--[if lte IE 8]><script src="/static/flot/excanvas.min.js"></script><![endif]-->
+    <!-- <script src="/static/main.js?v=2"></script> -->
+    <script src="/static/replay.js?v=6"></script>
+    <script src="/static/js/ui.js"></script>
+    $if 'javascript' in content:
+        $:content.javascript
+</body>
+</html>
+<!--      
+
+
         <div class="nav large clearfix">
           <div class="left">
             <a href="/home"><i class="fa fa-fw fa-home"></i><u id="key-home">S</u>tart</a>
@@ -36,13 +83,9 @@ $def with (content)
             $if 'logged_in' in sess and sess.logged_in:
               <a href="/robots"><i class="fa fa-fw fa-wrench"></i>Moje&nbsp;<u id="key-b">B</u>oty</a>
           </div>
+          
           <div class="right">
-            $if 'logged_in' in sess and sess.logged_in:
-              <a href="/user/$sess.user_id"><i class="fa fa-fw fa-user"></i><u id="key-p">P</u>rofil</a>
-              <a href="/logout"><i class="fa fa-fw fa-sign-out"></i>Wyloguj</a>
-            $else:
-              <a href="/reg"><i class="fa fa-fw fa-leaf"></i>Rejestracja</a>
-              <a href="/login"><i class="fa fa-fw fa-sign-in"></i><u id="key-l">L</u>ogowanie</a>
+            
           </div>
         </div>
         <div class="header faded">
@@ -52,7 +95,7 @@ $def with (content)
           <a href="https://plus.google.com/communities/118117754881924895861/stream/f5c3b7e3-300e-4dfb-8cec-d45276cd5e57">Zgłoszenia&nbsp;bugów</a>
         </div>
         <div class="content clearfix">
-          $:content
+          
         </div>
         <div class="footer">
           <div class="left">
@@ -60,16 +103,9 @@ $def with (content)
           </div>
           <div class="right">
             <!-- <span>#robotgame&nbsp;on&nbsp;irc.freenode.net</span> &middot; -->
-            <a href="/credits">O RobotGame</a> &middot;
+ <!--           <a href="/credits">O RobotGame</a> &middot;
             <a href="/stats">Statystyki</a>
           </div>
         </div>
-      </div>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <!--[if lte IE 8]><script src="/static/flot/excanvas.min.js"></script><![endif]-->
-  <script src="/static/main.js?v=2"></script>
-  <script src="/static/replay.js?v=6"></script>
-  $if 'javascript' in content:
-    $:content.javascript
-  </body>
-</html>
+      </div> -->
+
