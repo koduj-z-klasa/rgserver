@@ -1,17 +1,17 @@
 $def with (robot)
-$var title: Delete robot $robot.name
+$var title: Niszczenie robota: $robot.name
 <h1 class="no-margin"><a href="/robot/$robot.id">$robot.name</a></h1>
 <div class="faded">
     <div><b>Elo rating:</b> $tplib.rating(robot)</div>
 </div>
 <hr />
-<h2>Are you sure you want to delete this robot?</h2>
+<h2>Czy na pewno chcesz skasować tego robota??</h2>
 <p>
     <form class="inline" method="post" action="">
-        <button>Yes</button>
+        <button>Tak</button>
     </form>
     <form class="inline" method="get" action="/robots">
-        <button>No</button>
+        <button>Nie</button>
     </form>
 </p>
-<p class="red"><b>Warning:</b> You cannot reverse this decision.</p>
+<p class="red"><b>UWAGA:</b> Nie możesz cofnąć swojej decyzji.</p>

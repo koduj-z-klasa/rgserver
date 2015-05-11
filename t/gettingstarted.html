@@ -1,26 +1,33 @@
-$var title: Getting started
+$var title: Startujemy naszą zabawę/walkę
 <div class="prose">
     <div class="clearfix">
         <h1 class="left no-margin">Getting started</h1>
-        <h3 class="right no-margin"><a href="/api">Back to the table of contents</a></h3>
+        <h3 class="right no-margin"><a href="/api">Spis treści</a></h3>
     </div>
 
     <hr />
     <ol>
-        <li><a href="#a1">Creating a robot</a></li>
-        <li><a href="#a2">Accessing the robot's info</a></li>
-        <li><a href="#a3">Example starting robot</a></li>
+        <li><a href="#a1">Twórz robota</a></li>
+        <li><a href="#a2">Informacje o robocie</a></li>
+        <li><a href="#a3">Przykładowy robot</a></li>
     </ol>
     <hr/>
 
     <a name="a1"></a>
-    <h2>1. Creating a robot</h2>
-    <p>This is the basic structure of every robot file:</p>
+    <h2>1. Twórz robota</h2>
+    <p>Oto podstawowa struktura dla kazdego robota:</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">Robot</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">game</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">some</span> <span class="n">action</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">params</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gra</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">jakaś</span> <span class="n">akcja</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">params</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
     <p>
+         Na początku gry, system tworzy jedną instancję twojej klasy <code> Robot </code>. 
+         Oznacza to, że zmienne klasy i moduły zmienne globalne są wspólne dla robotów.
+         W każdej rundzie serwer wywołuje dla każdego robota metodę <code> act </code>
+         jeden raz w celu określenia jego następnej akcji. 
+         (Ponownie, prosimy o zapoznanie się z regułami - naprawdę warto.) 
+         Metoda powinna wrócić jednego z elementów:
+    
         At the beginning of the game, the system creates one instance of your
         <code>Robot</code> class. This means that class variables and your module's
         global variables are shared between calls. Every turn the system calls
