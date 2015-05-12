@@ -259,7 +259,7 @@ class PageHome:
     def GET(self):
         if logged_in(sess):
             return ltpl('home')
-        rating = 3000.0
+        rating = 1000.0
         match = get_latest_match(rating)
         if match:
             match.data = get_match_data(match['id'])
