@@ -1,12 +1,12 @@
 $def with (robot, vim, first_time)
-$var title: Editing robot $robot.name
+$var title: Modyfikacja robota: $robot.name
 $if first_time:
     <h3 class="notice">
-      <i class="fa fa-info-circle"></i> New to Robot Game? <a href="/api">Read through the Rules</a>!
+      <i class="fa fa-info-circle"></i> Pierwszy raz? <a href="/api">Poczytaj reguły - warto ;-)</a>!
     </h3>
 $if not robot.compiled  and not robot.compiled_code:
     <div class="notice">
-      <strong><a href='https://github.com/ramk13/robotgame/blob/master/strategy_guide/robotgame_strategy_guide.md'>strategy guide</a></strong> by <a href="https://github.com/ramk13">ramk13</a>.
+      <strong><a href='https://github.com/ramk13/robotgame/blob/master/strategy_guide/robotgame_strategy_guide.md'>strategie walki - przewodnik</a></strong> stworzony przez <a href="https://github.com/ramk13">ramk13</a>.
     </div>
 
 <div class="editrobot clearfix">
@@ -18,23 +18,23 @@ $if not robot.compiled  and not robot.compiled_code:
             </span>
             <span class="right small">
                 $if vim:
-                    (Using vim mode. <a href="/robot/$robot.id/edit/mode/normal"><b>Switch to normal</b></a>.)
+                    (Tryb zaawansowany (vim). <a href="/robot/$robot.id/edit/mode/normal"><b>Przełącz do zwykłego</b></a>.)
                 $else:
-                    (Using normal mode. <a href="/robot/$robot.id/edit/mode/vim"><b>Switch to vim</b></a>.)
+                    (Tryb zwykły. <a href="/robot/$robot.id/edit/mode/vim"><b>Przełącz do zaawansowanego (vim)</b></a>.)
             </span>
         </p>
         <p><textarea id="editor" name="code" wrap="off">$robot.code</textarea></p>
         <p class="clearfix">
-            <button class="left">Save</button>
+            <button class="left">Zapisz</button>
             <span class="right">
-                <input type="checkbox" name="open_source" id="open-source" autocomplete="off" $:('checked="checked"' if robot.open_source else '') /> <label for="open-source">Open source this robot</label>
+                <input type="checkbox" name="open_source" id="open-source" autocomplete="off" $:('checked="checked"' if robot.open_source else '') /> <label for="open-source">Niech się stanie OpenSource</label>
             </span>
         </p>
     </form>
     $if robot.saved and robot.compiled:
-        <div class="success">Your robot is saved. Go challenge some robots in the <a class="success" href="/directory"><b>warehouse</b></a>!</div>
+        <div class="success">Twój robot został zapisany. Go challenge some robots in the <a class="success" href="/directory"><b>warehouse</b></a>!</div>
     $else:
-        <p><a href="/compdir" target="_blank"><b>Compiling Directions</b></a></p>
+        <p><a href="/compdir" target="_blank"><b>Wskazówki kompilacji</b></a></p>
 </div>
 <link rel="stylesheet" type="text/css" href="/static/codemirror.css"/>
 <link rel="stylesheet" type="text/css" href="/static/themes/base16-dark.css"/>

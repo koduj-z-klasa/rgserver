@@ -1,10 +1,10 @@
 $def with (rid, robots)
 $var title: Challenge robot
 $if len(robots) == 0:
-    <p>Looks like you don't have any robots yet. You'll have to make a new one to get started.</p>
-    <form method="get" action="/robot/new"><button>Make a robot</button></form>
+    <p>Wygląda na to, że jeszcze nie masz robotów do walki. Musisz stworzyć choć jednego, aby zacząć.</p>
+    <form method="get" action="/robot/new"><button>Stwórz robota</button></form>
 $else:
-    <h1>Please choose the robot you want to use.</h1>
+    <h1>Wybierz robota, którego chcesz użyć do walki</h1>
     <table>
         $for robot in robots:
             <tr>

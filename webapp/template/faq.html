@@ -1,18 +1,18 @@
 $var title: FAQ
-<h1>FAQ</h1>
+<h1>FAQ - najczęsciej zadawane pytania</h1>
 
-<h2>What version of Python is the server using?</h2>
+<h2>Jaka wersja Pythona jest tu używana?</h2>
 <p>CPython 2.7.3.</p>
 
-<h2>What modules are available?</h2>
-<p>The entire Python standard library.</p>
+<h2>Jakie są dostępne moduły?</h2>
+<p>Wszystkie, które dostarcza standardowa biblioteka Pythona.</p>
 
-<h2>How do you make users don't destroy your server?</h2>
-<p>Each robot's code is run:</p>
+<h2>Najważniejsze pytanie - czy mój robot nie zniszczy serwera</h2>
+<p>NIE - każdy robot jest uruchamiany:</p>
 <ul>
-    <li>in a separate process</li>
-    <li>in a chroot jail</li>
-    <li>as user "nobody"</li>
-    <li>firewalled by iptables</li>
-    <li>restricted by ulimit from forking or using too much memory</li>
+    <li>jako oddzielny proces</li>
+    <li>w specjalnej klatce (chroot jail)</li>
+    <li>jako użytkownik "nikt/nobody"</li>
+    <li>w środowisku chronionym przez firewall "iptables"</li>
+    <li>w sposób ograniczonym przez ulimit, aby nie zużył zbyt wiele zasobów RAM</li>
 </ul>

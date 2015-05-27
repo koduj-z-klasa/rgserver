@@ -4,12 +4,12 @@ $def option(n):
   $if n is None:
     $ label = 'Noobs'
   $elif n > 10000:
-    $ label = 'All-Bots'
+    $ label = 'Wszystkie'
   $else:
     $ label = '&le;%d' % n
   <a href="?upper=$n&per=$per&viewactive=$viewactive">$:label</a>
 
-$var title: Warehouse
+$var title: Składzik robotów
 
 <!--<h1>Warehouse</h1>-->
 <!--<p>A list of all compiled robots on the server, ready for battle.</p>-->
@@ -20,10 +20,10 @@ $var title: Warehouse
   <span class="faded">&middot;</span>
   $if not viewactive:
     <a href="?upper=99999&latest=$latest&os=$os&diff=$diff&fast=$fast&short=$short&per=$per&viewactive=1">
-      Active-only</a>
+      Tylko aktywne</a>
   $else:
     <a href="?upper=99999&latest=$latest&os=$os&diff=$diff&fast=$fast&short=$short&per=$per&viewactive=">
-      View-all</a>
+      Wszystkie</a>
   <span class="faded">&middot;</span>
   <a href="?upper=99999&latest=1&per=$per&viewactive=$viewactive">
     Updated</a>
@@ -88,7 +88,7 @@ $var title: Warehouse
           </div>
         $if 'logged_in' in sess and sess['user_id'] == robot.user_id:
           $ color_class = 'me'
-          $ exp = 'My own bot'
+          $ exp = 'Moje roboty'
         $elif tplib.timedelta_ago(robot.last_updated).days < 3:
           $ color_class = 'fresh'
         $elif robot.automatch:
@@ -116,19 +116,19 @@ $var title: Warehouse
   </div>
   $if len(robots) == 0:
     $if page == 0:
-      <p>No robots!</p>
+      <p>Brak robotów!</p>
     $else:
-      <p>No more robots.</p>
+      <p>Nie ma więcej robotów.</p>
   <p class="right">
     $if page >= 1:
       <a href="?upper=$upper&page=$(page-1)&latest=$latest&os=$os&diff=$diff&viewactive=$viewactive&fast=$fast&short=$short&per=$per">
-        <i class="fa fa-fw fa-caret-left" id="key-left"></i>Prev
+        <i class="fa fa-fw fa-caret-left" id="key-left"></i>Poprzednie
       </a>
     $if len(robots) == per:
       $if page >= 1:
         <span class="faded">&middot;</span>
       <a href="?upper=$upper&page=$(page+1)&latest=$latest&os=$os&diff=$diff&viewactive=$viewactive&fast=$fast&short=$short&per=$per">
-        Next<i class="fa fa-fw fa-caret-right" id="key-right"></i>
+        Następne<i class="fa fa-fw fa-caret-right" id="key-right"></i>
       </a>
   </p>
 </div>
